@@ -1,6 +1,3 @@
-# chinese-event-extraction-pytorch
-一个简单的用pytorch实现中文事件抽取的代码。
-
 # 环境
 python 3.6
 
@@ -27,7 +24,6 @@ vocab.txt
 
 bert_Chinese: 模型 https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-chinese.tar.gz
 
-词表 https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-chinese-vocab.txt
+论文原文：
 
-来自[这里](https://github.com/huggingface/pytorch-transformers)
-
+Wang, J., Li, J., Zhu, Z., Zhao, Q., Yu, Y., Yang, L., & Xu, C. (2021). Joint Extraction of Events in Chinese Electronic Medical Records. 2021 IEEE 45th Annual Computers, Software, and Applications Conference (COMPSAC), 1924-1929.
