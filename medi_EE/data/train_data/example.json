@@ -1,0 +1,69 @@
+[
+    {
+        "sentence": "患者4月出现腹痛、恶心、呕吐、腹泻。",
+        "entity": [
+            {
+                "text": "腹痛",
+                "start": 6,
+                "end": 7,
+                "role": "症状"
+            },
+            {
+                "text": "恶心",
+                "start": 9,
+                "end": 10,
+                "role": "症状"
+            },
+            {
+                "text": "呕吐",
+                "start": 12,
+                "end": 13,
+                "role": "症状"
+            },
+            {
+                "text": "腹泻",
+                "start": 15,
+                "end": 16,
+                "role": "症状"
+            }
+        ],
+        "trigger": [
+            {
+                "text": "出现",
+                "start": 4,
+                "end": 5,
+                "event_type": "主诉"
+            }
+        ],
+        "arguments": [
+            {
+                "text": "腹痛",
+                "start": 6,
+                "end": 7,
+                "entity_type": "症状",
+                "role": "症状"
+            },
+            {
+                "text": "恶心",
+                "start": 9,
+                "end": 10,
+                "entity_type": "症状",
+                "role": "症状"
+            },
+            {
+                "text": "呕吐",
+                "start": 12,
+                "end": 13,
+                "entity_type": "症状",
+                "role": "症状"
+            },
+            {
+                "text": "腹泻",
+                "start": 15,
+                "end": 16,
+                "entity_type": "症状",
+                "role": "症状"
+            }
+        ]
+    }
+]
