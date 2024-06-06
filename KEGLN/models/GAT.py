@@ -11,7 +11,6 @@ class GraphAttentionLayer(nn.Module):
         self.out_features = out_features
         self.alpha = alpha
         self.concat = concat
-        
         self.W = nn.Parameter(torch.Tensor(in_features, out_features))
         self.a = nn.Parameter(torch.Tensor(2*out_features, 1))
         nn.init.xavier_uniform_(self.W.data, gain=1.414)

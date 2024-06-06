@@ -26,7 +26,6 @@ class GcnGat(nn.Module):
 if __name__ == '__main__':
     feature = torch.rand(size=(20, 256)).to('cuda')
     adj = torch.randint(0, 2, size=(20, 20), dtype=torch.float).to('cuda')
-
     model = GcnGat().to('cuda')
     output, _ = model(feature, adj)
     print(output.shape)

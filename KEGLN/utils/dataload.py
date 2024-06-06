@@ -15,10 +15,8 @@ class GraphDataset(Dataset):
         self.bv = Embedding(bert_pretrained_path)  # Bert Vector
         self.desc_vector ,self.desc_info = self.description()
         self.cos = torch.nn.CosineSimilarity(dim=1, eps=1e-6)
-
         self.child_adj, self.child_features, self.labels = self.build_child_graph()
         self.father_adj = self.build_father_graph()
-
         self.data = [self.child_features, self.child_adj, self.father_adj, self.labels]
 
         assert self.child_adj.shape[0] == self.father_adj.shape[0]

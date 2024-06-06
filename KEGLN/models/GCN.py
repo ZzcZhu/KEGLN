@@ -24,7 +24,6 @@ class GraphConvolution(nn.Module):
         else:
             return output
 
-
 class GCN(nn.Module):
     def __init__(self, n_layers, n_features, hidden_dim, dropout, n_classes):
         super(GCN, self).__init__()

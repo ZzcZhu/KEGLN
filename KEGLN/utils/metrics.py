@@ -10,7 +10,6 @@ def getMetrics(y_true, y_pred):
         'recall': recall_score(y_true, y_pred, average='macro', zero_division=0.0),
         'f1': f1_score(y_true, y_pred, average='macro', zero_division=0.0)
     }
-
     return result
 
 

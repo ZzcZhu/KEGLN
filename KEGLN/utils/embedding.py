@@ -31,10 +31,21 @@ class Embedding:
 
         return sentence_embedding
 
+    def similarity(self, sentence1, sentence2):
+        sentence_embedding = (self.toVector(sentence1), self.toVector(sentence2))
+        # 计算余弦相似度
+        cos = torch.nn.CosineSimilarity(dim=1, eps=1e-6)
+        similarity = cos(sentence_embedding[0], sentence_embedding[-1])
+
+        return similarity
+
 
 if __name__ == '__main__':
     text = "你好吗？"
+    ref = "我很好"
     path = r'../configs/bert-base-chinese'
     embedding = Embedding()
     vector = embedding.toVector(text)
     print(vector.shape)
+
+    print(embedding.similarity(text, ref))

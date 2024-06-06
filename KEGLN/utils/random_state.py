@@ -4,7 +4,6 @@ import random
 import numpy as np
 import os
 
-
 class RandomState(object):
     def __init__(self, seed):
         torch.set_num_threads(1)

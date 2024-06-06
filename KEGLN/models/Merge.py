@@ -6,7 +6,7 @@ import torch
 
 class MergeModel(nn.Module):
     def __init__(self, n_layers=2, child_features=256, father_features=256, hidden_dim=256,
-                 dropout=0.5, alpha=0.1, heads=8, n_classes=2):
+                 dropout=0.3, alpha=0.1, heads=8, n_classes=2):
         super(MergeModel, self).__init__()
 
         self.child_layer = GcnGat(n_layers=n_layers, n_features=child_features, hidden_dim=hidden_dim,

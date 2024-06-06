@@ -116,6 +116,5 @@ if __name__ == '__main__':
     best_metrics = train(model=model, epoch=configs['epoch'], train_loader=train_loader, valid_loader=valid_loader,
           criterion=criterion, optimizer=optimizer, device=configs['device'], pth_save_path=configs['pth_save_path'],
                          accumulation_steps=configs['accumulation_steps'])
-
     print('best_metrics'.center(80, '-'))
     print(best_metrics)
