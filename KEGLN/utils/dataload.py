@@ -12,7 +12,9 @@ class GraphDataset(Dataset):
         self.mode = mode
         self.ratio = ratio
         self.idx_features_labels = np.genfromtxt(data_path, dtype=np.dtype(str), encoding='utf-8')
-        self.bv = Embedding(bert_pretrained_path)   # Bert Vector
+        self.bv = Embedding(bert_pretrained_path)  # Bert Vector
+        self.desc_vector ,self.desc_info = self.description()
+        self.cos = torch.nn.CosineSimilarity(dim=1, eps=1e-6)
 
         self.child_adj, self.child_features, self.labels = self.build_child_graph()
         self.father_adj = self.build_father_graph()
@@ -27,6 +29,25 @@ class GraphDataset(Dataset):
                 self.data[i] = self.data[i][:split]
             else:
                 self.data[i] = self.data[i][split:]
+
+    def description(self):
+        desc_vector = []
+        with open(os.path.join(os.path.dirname(self.data_path), 'description'), 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+            for line in lines:
+                desc_vector.append(self.bv.toVector(line))
+
+        return desc_vector, lines
+
+    def similarityCalculate(self, sentence):
+        max_similarity, result = 0, ''
+        sentence_vector = self.bv.toVector(sentence)
+        for vector in self.desc_vector:
+            ans = self.cos(sentence_vector, vector)
+            if max_similarity < ans:
+                max_similarity, result = ans, vector
+        return sentence_vector[0] + result[0]
+    
     # 构建元素关系图
     def build_child_graph(self):
         name_map = dict()
@@ -37,6 +58,7 @@ class GraphDataset(Dataset):
                 labels.append(int(float(item[-1])))
             name_map[item[1]].append(list(item[3:-1]))
         name_map = dict(sorted(name_map.items()))
+
         size = len(name_map['10002013'][0])
         edges = np.array([[i, j] for i in range(size) for j in range(size)])
 
@@ -46,7 +68,7 @@ class GraphDataset(Dataset):
             for sentence in value:
                 word2vec = []
                 for word in sentence:
-                    word2vec.append(list(self.bv.toVector(word)[0]))
+                    word2vec.append(list(self.similarityCalculate(word)))
                 word2vec = np.array(word2vec)
                 features = sp.csr_matrix(word2vec, dtype=np.float32)
                 temp_features.append(features.toarray())
@@ -59,7 +81,7 @@ class GraphDataset(Dataset):
         child_adj = np.array(child_adj)
 
         return child_adj, child_features, labels
-        
+    
     # 构建事件关系图
     def build_father_graph(self):
         infos = self.idx_features_labels[:, 0:2]
