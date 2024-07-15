@@ -1,5 +1,5 @@
 
-# 说明（Description）
+# 说明（Explanation）
     此文件夹用于存放下载好的pytorch版的BERT预训练模型。（This folder is designated for storing the downloaded PyTorch version of the BERT pre-trained model.）
     包括：（Including：）
         pytorch_model.bin  

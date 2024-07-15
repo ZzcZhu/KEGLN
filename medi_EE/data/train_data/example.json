@@ -1,6 +1,6 @@
 [
     {
-        "sentence": "患者4月出现腹痛、恶心、呕吐、腹泻。",
+        "sentence": "患者突然出现腹痛、恶心、呕吐、腹泻。",
         "entity": [
             {
                 "text": "腹痛",
@@ -61,6 +61,127 @@
                 "text": "腹泻",
                 "start": 15,
                 "end": 16,
+                "entity_type": "症状",
+                "role": "症状"
+            }
+        ]
+    },
+    {
+        "sentence": "查体：体温36.5℃，脉搏71次／分，呼吸20次／分，血压149／65mmHg。",
+        "entity": [
+            {
+                "text": "体温",
+                "start": 3,
+                "end": 4,
+                "role": "检查"
+            },
+            {
+                "text": "脉搏",
+                "start": 11,
+                "end": 12,
+                "role": "检查"
+            },
+            {
+                "text": "呼吸",
+                "start": 19,
+                "end": 20,
+                "role": "检查"
+            },
+            {
+                "text": "血压",
+                "start": 27,
+                "end": 28,
+                "role": "检查"
+            }
+        ],
+        "trigger": [
+            {
+                "text": "查体",
+                "start": 0,
+                "end": 1,
+                "event_type": "检查"
+            }
+        ],
+        "arguments": [
+            {
+                "text": "体温",
+                "start": 3,
+                "end": 4,
+                "entity_type": "检查",
+                "role": "检查"
+            },
+            {
+                "text": "脉搏",
+                "start": 11,
+                "end": 12,
+                "entity_type": "检查",
+                "role": "检查"
+            },
+            {
+                "text": "呼吸",
+                "start": 19,
+                "end": 20,
+                "entity_type": "检查",
+                "role": "检查"
+            },
+            {
+                "text": "血压",
+                "start": 27,
+                "end": 28,
+                "entity_type": "检查",
+                "role": "检查"
+            }
+        ]
+    },
+    {
+        "sentence": "出现咳嗽、咳痰、喘息。",
+        "entity": [
+            {
+                "text": "咳嗽",
+                "start": 2,
+                "end": 4,
+                "role": "症状"
+            },
+            {
+                "text": "咳痰",
+                "start": 5,
+                "end": 7,
+                "role": "症状"
+            },
+            {
+                "text": "喘息",
+                "start": 8,
+                "end": 10,
+                "role": "症状"
+            }
+        ],
+        "trigger": [
+            {
+                "text": "出现",
+                "start": 0,
+                "end": 2,
+                "event_type": "主诉"
+            }
+        ],
+        "arguments": [
+            {
+                "text": "咳嗽",
+                "start": 2,
+                "end": 4,
+                "entity_type": "症状",
+                "role": "症状"
+            },
+            {
+                "text": "咳痰",
+                "start": 5,
+                "end": 7,
+                "entity_type": "症状",
+                "role": "症状"
+            },
+            {
+                "text": "喘息",
+                "start": 8,
+                "end": 10,
                 "entity_type": "症状",
                 "role": "症状"
             }

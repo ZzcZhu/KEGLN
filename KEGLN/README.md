@@ -26,5 +26,5 @@ python train.py
 # 4 论文 (Paper)
     A knowledge-guided event-relation graph learning network for patient similarity with Chinese electronic medical records
 
-# 补充说明（Description）
+# 补充说明（Supplementary explanation）
     由于真实数据受保护的原因，因此与其相关的内容也暂时无法提供。此代码为KEGLN模型在公开数据集上的评估代码。真实数据获得权限后，相关内容会在第一时间公开。（Due to the protected nature of the real data, related content is temporarily unavailable. This code serves as an evaluation of the KEGLN model on public datasets. Once access to the real data is granted, relevant content will be released promptly.）
