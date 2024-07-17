@@ -1,5 +1,5 @@
 # 说明（Explanation）：
-    这是一个用于医学文本事件抽取模型，需要根据实际需求使用特定数据对其进行预训练，输出的模型会被保存在models文件夹下，通过调用该训练好的模型可以用于对新医学文本进行事件抽取。（This is a model designed for medical text event extraction, which requires pre-training with specific data based on actual needs. The trained model will be saved in the “models” folder. By invoking this pre-trained model, it can be utilized to perform event extraction on new medical texts.）
+    这是一个用于医学文本事件抽取模型，需要根据实际需求使用特定数据先进行模型训练，输出的模型会被保存在models文件夹下，通过调用训练好的模型可以用于对新医学文本进行事件抽取。（This is a model designed for medical text event extraction, which requires pre-training with specific data based on actual needs. The trained model will be saved in the “models” folder. By invoking the pre-trained model, it can be utilized to perform event extraction on new medical texts.）
 
 # 环境设置 （Environment settings）：
     python 3.6

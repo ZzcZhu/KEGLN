@@ -2,7 +2,7 @@
 import time
 import torch
 import numpy as np
-from train_eval import train, init_network
+from train_eval import train, init_network, eval
 from importlib import import_module
 import argparse
 from utils import build_dataset, build_iterator, get_time_dif
@@ -36,7 +36,11 @@ if __name__ == '__main__':
     test_iter = build_iterator(test_data, config)
     time_dif = get_time_dif(start_time)
     print("Time usage:", time_dif)
-
-    # train
     model = x.Model(config).to(config.device)
-    train(config, model, train_iter, test_iter)
+    predict_label = 0
+    if predict_label == 0:
+        # train
+        train(config, model, train_iter, test_iter)
+    else:
+        # predict
+        metric,trigger_f1,argument_f1 = eval(model, train_iter, 'data/result_data/predict_result')
