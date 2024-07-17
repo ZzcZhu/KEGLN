@@ -8,7 +8,7 @@
 
 
 # 数据集 (Datasets)：
-    用于训练此模型的数据集是一个真实的数据集，受医院保护，因此只能提供参考示例。（The dataset used to train this model is a real-world dataset, which is protected by the hospital, hence only a reference example can be provided.）
+    用于训练此模型的数据集涉及真实的电子病历数据，受医院保护，因此只能提供参考示例。（The dataset used to train this model involves the real-world EMRs, which is protected by the hospital, hence only a reference example can be provided.）
 
 
 # 运行 (Code running)：
