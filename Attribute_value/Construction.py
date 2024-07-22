@@ -1,3 +1,5 @@
+# author: Zhichao Zhu
+
 import json
 
 def extract_text_from_entities(data):

@@ -1,3 +1,4 @@
+# author: Zhichao Zhu
 import torch.nn.functional as F
 from models.GcnGat import GcnGat
 import torch.nn as nn

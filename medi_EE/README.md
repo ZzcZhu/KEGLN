@@ -15,6 +15,6 @@
     python run.py
 
 
-# 论文原文：
+# 论文原文（Paper）：
     使用此代码请引用此篇论文：（To use this code, please cite the following paper：）
     Wang, J., Li, J., Zhu, Z., Zhao, Q., Yu, Y., Yang, L., & Xu, C. (2021). Joint Extraction of Events in Chinese Electronic Medical Records. 2021 IEEE 45th Annual Computers, Software, and Applications Conference (COMPSAC), 1924-1929.

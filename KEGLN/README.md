@@ -23,8 +23,8 @@ python train.py
     关于文章中提到的几种对比方法，鉴于这些方法是其他作者团队的辛勤研究成果，出于对知识产权的尊重，我必须先行获得对方的同意，才能进行公开。我会积极与作者团队进行联系和协商，若获得许可，复现代码将会逐步在代码库中更新。（Regarding the comparative methods mentioned in the article, as these methods represent the hard-earned research outcomes of other author teams, out of respect for intellectual property rights, I must first obtain their consent before making them public. I will actively engage in communication and negotiation with the author teams. Should permission be granted, the replication code will be gradually updated in this code database.）
 
 
-# 4 论文 (Paper)
+# 4 论文 ：(Paper)
     A knowledge-guided event-relation graph learning network for patient similarity with Chinese electronic medical records
 
-# 补充说明（Supplementary explanation）
+# 补充说明：（Supplementary explanation）
     由于真实数据受保护的原因，因此与其相关的内容也暂时无法提供。此代码为KEGLN模型在公开数据集上的评估代码。真实数据获得权限后，相关内容会在第一时间公开。（Due to the protected nature of the real data, related content is temporarily unavailable. This code serves as an evaluation of the KEGLN model on public datasets. Once access to the real data is granted, relevant content will be released promptly.）

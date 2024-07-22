@@ -10,3 +10,4 @@ python Relation_compute.py
     temp.cites为最终输出，是事件间的关系，与Medi_EE输出可以组成KEGLN的训练数据。（The "temp.cites" is the final output, representing the relationships between events. When combined with the output from Medi_EE, it can form the training data for the KEGLN model.）
 
 
+
