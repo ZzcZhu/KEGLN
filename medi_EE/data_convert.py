@@ -117,5 +117,5 @@ S = """[CLS]	NONE	NONE
 
 D = convert_to_json(S)
 print(D)
-with open("output_data", "w", encoding="utf-8") as f:
+with open("output_data.json", "w", encoding="utf-8") as f:
     json.dump(D, f, ensure_ascii=False, indent=4)
