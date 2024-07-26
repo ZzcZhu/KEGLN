@@ -13,5 +13,10 @@
         (4)  KEGLN (KEGLN model training)
     Among them, (1), (2), and (3) constitute the data preparation phase (i.e., preprocessing), which is independent of the core method (4). If your data already meets the training data standards for the KEGLN model, steps (1), (2), and (3) can be omitted.
 
+    还请允许我做出一些解释：（Please allow me to provide some explanations：）
+        由于我提出的KEGLN方法较为复杂，从而导致其对数据的格式和内容的要求也极为苛刻，涉及较为复杂的前期数据处理（上面提到的步骤（1）（2）（3）），还请见谅。为了保证各位同行能够快速上手，我目前更新的最新代码已尽可能地让每个独立部分产出的数据能够为下一步骤服务（详细说明已在相应的部分给出）。后期我会继续优化代码，以尽可能的把各自独立的部分衔接起来做成一个完备的整体。
+        此外，由于步骤（2）和步骤（3）不涉及模型学习和训练过程，因此可能存在输出数据不完全准确的情况，事实上，数据处理本身就需要一定的人力纠正。
+        （Due to the complexity of the proposed KEGLN method, it imposes stringent requirements on the format and content of the data, necessitating relatively complex preliminary data processing (as mentioned in steps (1), (2), and (3) above). I apologize for any inconvenience this may cause. To ensure that you can quickly get started, I have updated the latest version of the code to let the output from each independent part can serve the next step as much as possible (detailed explanations have been provided in the corresponding sections). I will continue to optimize the code to connect the independent parts as much as possible to form a complete whole. In addition, since steps (2) and (3) do not involve model learning and training processes, there may be situations where the output data is not completely accurate. In fact, data processing itself requires a certain amount of manual correction.）
+
 # 论文（Paper）
     A knowledge-guided event-relation graph learning network for patient similarity with Chinese electronic medical records

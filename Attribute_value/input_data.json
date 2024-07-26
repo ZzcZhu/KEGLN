@@ -20,13 +20,14 @@
         ]
     },
     {
-        "sentence": "查体：体温37.0℃，脉搏75次／分，呼吸18次／分，血压140／70mmHg。咽拭子阳性",
+        "sentence": "查体：体温37.0℃，脉搏75次／分，呼吸18次／分，血压140／70mmHg。咽拭子阳性，心动图正常",
         "entity": [
             {"text": "体温", "start": 3, "end": 4, "role": "检查"},
             {"text": "脉搏", "start": 11, "end": 12, "role": "检查"},
             {"text": "呼吸", "start": 19, "end": 20, "role": "检查"},
             {"text": "血压", "start": 27, "end": 28, "role": "检查"},
-            {"text": "咽拭子", "start": 40, "end": 42, "role": "检查"}
+            {"text": "咽拭子", "start": 40, "end": 42, "role": "检查"},
+            {"text": "心动图", "start": 46, "end": 48, "role": "检查"}
         ],
         "trigger": [
             {"text": "查体", "start": 0, "end": 1, "event_type": "检查"}
@@ -36,7 +37,8 @@
             {"text": "脉搏", "start": 11, "end": 12, "entity_type": "检查", "role": "检查"},
             {"text": "呼吸", "start": 19, "end": 20, "entity_type": "检查", "role": "检查"},
             {"text": "血压", "start": 27, "end": 28, "entity_type": "检查", "role": "检查"},
-            {"text": "咽拭子", "start": 40, "end": 42, "entity_type": "检查", "role": "检查"}
+            {"text": "咽拭子", "start": 40, "end": 42, "entity_type": "检查", "role": "检查"},
+            {"text": "心动图", "start": 46, "end": 48, "entity_type": "检查", "role": "检查"}
         ]
     }
 ]
