@@ -9,15 +9,12 @@ def remove_annotations(text):
 def convert_to_jso(lines):
     sentence = ''.join([line.split('\t')[0] for line in lines])
     sentence = remove_annotations(sentence)
-    print(sentence)
-    print("----------")
     entities = []
     triggers = []
     arguments = []
     
     entity = {'text': '', 'start': -1, 'end': -1, 'role': ''}
     trigger = {'text': '', 'start': -1, 'end': -1, 'event_type': ''}
-    print(lines)
     for i, line in enumerate(lines):
         word, tag1, tag2 = line.split('\t')
         if tag1.startswith('B-T-'):
@@ -62,7 +59,7 @@ def convert_to_json(data):
             result = convert_to_jso(lines)
             results.append(result)
     
-    return json.dumps(results, ensure_ascii=False, indent=4)
+    return result
 
 
 # Read prediction document
@@ -116,6 +113,6 @@ S = """[CLS]	NONE	NONE
 。	NONE	NONE"""
 
 D = convert_to_json(S)
-print(D)
+print(type(D))
 with open("output_data.json", "w", encoding="utf-8") as f:
     json.dump(D, f, ensure_ascii=False, indent=4)

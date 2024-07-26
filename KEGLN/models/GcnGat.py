@@ -1,3 +1,4 @@
+# author: Zhichao Zhu
 import torch
 import torch.nn as nn
 from models.GCN import GCN
