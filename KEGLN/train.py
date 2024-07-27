@@ -5,13 +5,15 @@ from utils.dataload import GraphDataset
 from utils.metrics import getMetrics
 from utils.random_state import RandomState
 from models.Merge import MergeModel
+from utils.psloss import ps_loss
 import torch.nn as nn
 from tqdm import tqdm
 import torch
 import os
 
 
-def train(model, epoch, train_loader, valid_loader, criterion, optimizer, device, pth_save_path, accumulation_steps):
+def train(model, epoch, train_loader, valid_loader, criterion, optimizer, device, pth_save_path, accumulation_steps,
+          alpha):
     best_metrics = {'acc': 0}
 
     for i in range(epoch):
@@ -21,8 +23,10 @@ def train(model, epoch, train_loader, valid_loader, criterion, optimizer, device
         for count, (child_feature, child_adj, father_adj, label) in tqdm(enumerate(train_loader)):
             child_feature, child_adj, father_adj, label = child_feature.to(device), child_adj.to(device), \
                 father_adj.to(device), label.to(device)
-            output = model(child_feature, child_adj, father_adj)
-            loss = criterion(output, label) / accumulation_steps
+            output, feature = model(child_feature, child_adj, father_adj)
+            adloss = criterion(output, label) / accumulation_steps
+            psloss = ps_loss(feature, label)
+            loss = adloss + alpha * psloss
             train_loss_list.append(loss.item())
             loss.backward()
             output = output.argmax(axis=1)
@@ -60,7 +64,7 @@ def validation(model, valid_loader, criterion, device):
                 father_adj.to(device), label.to(device)
             batch_size = child_feature.shape[0]
             assert batch_size == 1
-            output = model(child_feature, child_adj, father_adj)
+            output, feature = model(child_feature, child_adj, father_adj)
             loss = criterion(output, label)
             validation_loss_list.append(loss.item())
             output = output.argmax(axis=1)
@@ -86,12 +90,13 @@ if __name__ == '__main__':
         'dataset_path': r'./datasets/temp',
         'bert_pretrained_path': r'./configs/bert-base-chinese',
         'device': torch.device('cuda' if torch.cuda.is_available() else 'cpu'),
-        'lr': 1e-3,
+        'lr': 1e-4,
         'epoch': 200,
         'batch_size': 32,
         'accumulation_steps': 2,
         'pth_save_path': r'./pths',
-        'seed': 8866
+        'seed': 8866,
+        'alpha': 1.0,       
     }
 
     # fixed random seed
@@ -105,7 +110,7 @@ if __name__ == '__main__':
     train_loader = DataLoader(dataset=train_dataset, batch_size=configs['batch_size'], shuffle=True)
     valid_loader = DataLoader(dataset=valid_dataset, batch_size=configs['batch_size'], shuffle=False)
 
-    model = MergeModel(n_layers=2, child_features=256, father_features=256, hidden_dim=256, dropout=0.3, alpha=0.1,
+    model = MergeModel(n_layers=2, child_features=768, father_features=768, hidden_dim=256, dropout=0.5, alpha=0.2,
                        heads=8, n_classes=2).to(configs['device'])
 
     # define loss function
@@ -117,6 +122,7 @@ if __name__ == '__main__':
     # training
     best_metrics = train(model=model, epoch=configs['epoch'], train_loader=train_loader, valid_loader=valid_loader,
           criterion=criterion, optimizer=optimizer, device=configs['device'], pth_save_path=configs['pth_save_path'],
-                         accumulation_steps=configs['accumulation_steps'])
+                         accumulation_steps=configs['accumulation_steps'], alpha=configs['alpha'])
+
     print('best_metrics'.center(80, '-'))
     print(best_metrics)

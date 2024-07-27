@@ -54,11 +54,11 @@ class GCN(nn.Module):
 
 
 if __name__ == '__main__':
-    feature = torch.rand(size=(20, 256)).to('cuda')
+    feature = torch.rand(size=(20, 512)).to('cuda')
     adj = torch.randint(0, 2, size=(20, 20), dtype=torch.float).to('cuda')
     adj = adj.to_sparse()
 
-    model = GCN(n_layers=2, n_features=256, hidden_dim=256, dropout=0.3, n_classes=2).to('cuda')
+    model = GCN(n_layers=2, n_features=512, hidden_dim=256, dropout=0.3, n_classes=2).to('cuda')
     output = model(feature, adj)
     print(output.shape)
     print(output)

@@ -65,11 +65,11 @@ class GAT(nn.Module):
 
 
 if __name__ == '__main__':
-    feature = torch.rand(size=(8, 20, 256)).to('cuda')
+    feature = torch.rand(size=(8, 20, 512)).to('cuda')
     adj = torch.randint(0, 2, size=(8, 20, 20), dtype=torch.float).to('cuda')
     # adj = adj.to_sparse()
 
-    model = GAT(nfeat=256, nhid=256, nclass=2, dropout=0.3, alpha=0.1, nheads=8).to('cuda')
+    model = GAT(nfeat=512, nhid=256, nclass=2, dropout=0.3, alpha=0.1, nheads=8).to('cuda')
     output = model(feature, adj)
     print(output.shape)
     print(output)

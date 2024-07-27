@@ -25,23 +25,31 @@ class MergeModel(nn.Module):
 
         self.classifier = nn.Linear(in_features=hidden_dim * 2, out_features=n_classes)
 
-    def forward(self, child_feature, child_adj, father_adj):
-        child_feature, child_adj, father_adj = child_feature.squeeze(0), child_adj.squeeze(0), father_adj.squeeze(0)
-        event_num = child_feature.shape[0]
-        for i in range(event_num):
-            child_feature[i], child_adj[i] = self.child_layer(child_feature[i], child_adj[i])
+    def forward(self, child_feature_batch, child_adj_batch, father_adj_batch):
 
-        father_feature = torch.mean(child_feature, dim=1)
+        batch_size, predict, feature = child_feature_batch.shape[0], [], []
+        for i in range(batch_size):
+            child_feature, child_adj, father_adj = child_feature_batch[i], child_adj_batch[i], father_adj_batch[i]
+            event_num = child_feature.shape[0]
+            for i in range(event_num):
+                child_feature[i], child_adj[i] = self.child_layer(child_feature[i], child_adj[i])
 
-        father_feature, father_adj = self.father_layer(father_feature, father_adj)
-        x = father_feature.unsqueeze(0)
-        x, (hn, cn) = self.biLSTM(x)
+            father_feature = torch.mean(child_feature, dim=1)
 
-        x, _ = scaled_dot_product_attention(x, x, x)
-        x = torch.mean(x, dim=1)
-        x = self.classifier(x)
+            father_feature, father_adj = self.father_layer(father_feature, father_adj)
+            x = father_feature.unsqueeze(0)
+            x, (hn, cn) = self.biLSTM(x)
 
-        return x
+            x, _ = scaled_dot_product_attention(x, x, x)
+            x = torch.mean(x, dim=1)
+            feature.append(x)
+            x = self.classifier(x)
+            predict.append(x)
+
+        predict = torch.stack(predict)
+        feature = torch.stack(feature)
+
+        return predict.squeeze(1), feature.squeeze(1)
 
 
 def scaled_dot_product_attention(query, key, value):

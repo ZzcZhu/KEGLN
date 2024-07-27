@@ -7,7 +7,7 @@ from models.GAT import GAT
 
 class GcnGat(nn.Module):
     def __init__(self, n_layers=2, n_features=256, hidden_dim=256,
-                 dropout=0.3, alpha=0.1, heads=8):
+                 dropout=0.3, alpha=0.2, heads=8):
         super(GcnGat, self).__init__()
 
         self.gcn = GCN(n_layers=n_layers, n_features=n_features, hidden_dim=hidden_dim, dropout=dropout,
