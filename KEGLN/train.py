@@ -90,7 +90,7 @@ if __name__ == '__main__':
         'dataset_path': r'./datasets/temp',
         'bert_pretrained_path': r'./configs/bert-base-chinese',
         'device': torch.device('cuda' if torch.cuda.is_available() else 'cpu'),
-        'lr': 1e-4,
+        'lr': 1e-3,
         'epoch': 200,
         'batch_size': 32,
         'accumulation_steps': 2,
@@ -98,6 +98,8 @@ if __name__ == '__main__':
         'seed': 8866,
         'alpha': 1.0,       
     }
+
+    os.makedirs(configs['pth_save_path'], exist_ok=True)
 
     # fixed random seed
     randomState = RandomState(seed=configs['seed'])
@@ -110,7 +112,7 @@ if __name__ == '__main__':
     train_loader = DataLoader(dataset=train_dataset, batch_size=configs['batch_size'], shuffle=True)
     valid_loader = DataLoader(dataset=valid_dataset, batch_size=configs['batch_size'], shuffle=False)
 
-    model = MergeModel(n_layers=2, child_features=768, father_features=768, hidden_dim=256, dropout=0.5, alpha=0.2,
+    model = MergeModel(n_layers=2, child_features=256, father_features=256, hidden_dim=256, dropout=0.3, alpha=0.1,
                        heads=8, n_classes=2).to(configs['device'])
 
     # define loss function

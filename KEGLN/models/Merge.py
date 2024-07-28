@@ -9,7 +9,7 @@ class MergeModel(nn.Module):
     def __init__(self, n_layers=2, child_features=256, father_features=256, hidden_dim=256,
                  dropout=0.3, alpha=0.1, heads=8, n_classes=2):
         super(MergeModel, self).__init__()
-
+        self.fc = nn.Linear(in_features=768, out_features=child_features)
         self.child_layer = GcnGat(n_layers=n_layers, n_features=child_features, hidden_dim=hidden_dim,
                  dropout=dropout, alpha=alpha, heads=heads)
 
@@ -30,6 +30,7 @@ class MergeModel(nn.Module):
         batch_size, predict, feature = child_feature_batch.shape[0], [], []
         for i in range(batch_size):
             child_feature, child_adj, father_adj = child_feature_batch[i], child_adj_batch[i], father_adj_batch[i]
+            child_feature = self.fc(child_feature)
             event_num = child_feature.shape[0]
             for i in range(event_num):
                 child_feature[i], child_adj[i] = self.child_layer(child_feature[i], child_adj[i])
