@@ -18,5 +18,9 @@
         此外，由于步骤（2）和步骤（3）不涉及模型学习和训练过程，因此可能存在输出数据与预期结果差异较大的问题，需要一定的人工校对。事实上，数据处理本身就不可避免的需要一定的人工参与。
         （Due to the complexity of the proposed KEGLN method, it imposes stringent requirements on the format and content of the data, necessitating relatively complex preliminary data processing (as mentioned in steps (1), (2), and (3) above). I apologize for any inconvenience this may cause. To ensure that you can quickly get started, I have updated the latest version of the code to let the output from each independent part can serve the next step as much as possible (detailed explanations have been provided in the corresponding sections). I will continue to optimize the code to connect the independent parts as much as possible to form a complete whole. In addition, since steps (2) and (3) do not involve model learning and training processes, there may be great differences between the output data and the expected results, requiring some manual proofreading. In fact, data processing itself inevitably requires some human involvement.）
 
+    重要提示：（Important Note: ）
+        步骤（1）、（2）和（3）均建议按照以单个患者病历作为输入来逐一执行代码，因为本研究提出的KEGLN是基于两个各自独立的患者的事件图来计算相似性的，同时处理多个患者病历容易造成数据和图结构混乱。（Steps (1), (2), and (3) are recommended to be executed one by one using individual patient records as input, because the KEGLN proposed in this study calculates similarity based on two independently constructed patient event graphs. Processing multiple patient data simultaneously may lead to the confusion of the data and the graph structure.）
+        每个患者病历按照步骤（1），（2）和（3）处理完毕后，将步骤（2）和（3）产出的全部患者数据根据患者ID拼接在一起，即可得到最终KEGLN的训练数据。（After processing each patient's medical record according to steps (1), (2), and (3), concatenate all patient data produced from steps (2) and (3) based on patient ID to obtain the final KEGLN training data.）
+
 # 论文（Paper）
     A knowledge-guided event-relation graph learning network for patient similarity with Chinese electronic medical records

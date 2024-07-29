@@ -47,14 +47,14 @@ def calculate_average_cpmi_between_sentences(sentence1, sentence2):
     
     return sum(all_cpmi_values) / len(all_cpmi_values) if all_cpmi_values else 0
 
-def main(topk):
+def main(topk, patient_id):
 
-    input_filename = 'event_example.json'
+    input_filename = 'Event_relation\\event_example.json'
 
     with open(input_filename, 'r', encoding='utf-8') as infile:
         input_data = json.load(infile)
 
-
+    
     output_data = []
     event_id_counter = 1
 
@@ -68,7 +68,7 @@ def main(topk):
 
     
 
-    output_filename = 'event_output.json'
+    output_filename = 'Event_relation\\event_output.json'
     with open(output_filename, 'w', encoding='utf-8') as outfile:
         json.dump(output_data, outfile, indent=4, ensure_ascii=False)
 
@@ -104,13 +104,15 @@ def main(topk):
     for event_id in results:
         sorted_related_events = sorted(results[event_id], key=lambda x: x[1], reverse=True)[:topk]
         for related_event, strength in sorted_related_events:
-            top_relationships.append((event_id, related_event))
+            top_relationships.append((str(patient_id) + "-" + str(event_id), str(patient_id) + "-" + str(related_event)))
     
+    print(top_relationships)
 
-    with open('temp.cites', 'w', encoding='utf-8') as f:
+    with open('Event_relation\\temp.cites', 'w', encoding='utf-8') as f:
         for event_id1, event_id2 in top_relationships:
-            f.write(f"{event_id1}\t{event_id2}\n")
+            f.write(event_id1 + "\t" + event_id2 + "\n")
 
 if __name__ == "__main__":
     topk = 4  # 邻居数量
-    main(topk)
+    patient_id = "id"  # 患者实际ID，根据实际数据情况替换
+    main(topk, patient_id)

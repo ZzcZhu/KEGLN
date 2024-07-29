@@ -112,12 +112,13 @@ for s_list, d_list in zip(origin_data, results):
             
     element_lists.append(temp_list)
 
-
-output_file = "temp"
+patient_id = "id"  # 患者实际ID，根据实际数据情况替换
+label = "type"  # 患者类别信息，一般是诊断结果，0，1.0,2.0等等多种，需要根据实际情况替换
+output_file = "temp"  
 with open("Attribute_value\\" + output_file, "w", encoding="utf-8") as f:
     for i in range(len(element_lists)):
         j = 0  # 一个事件中最多包含20个事件元素，多裁少补
-        s = "id-"+ str(i+1) + "\t" + "id" + "\t" + event_type[i]  # 这里的id指的是患者的实际id，需要根据实际情况替换
+        s = str(patient_id) + "-" + str(i+1) + "\t" + str(patient_id) + "\t" + event_type[i] 
         for each in element_lists[i]:
             if j<20:
                 s += "\t" + str(each)
@@ -127,7 +128,7 @@ with open("Attribute_value\\" + output_file, "w", encoding="utf-8") as f:
         while j<20:
             s += "\t" + "0"
             j += 1
-        s = s + "\t" + "label"  # 这里的label指的是患者的实际类别label，需要根据实际情况替换
+        s = s + "\t" + str(label)  
         f.write(s)
         f.write("\n")
 
