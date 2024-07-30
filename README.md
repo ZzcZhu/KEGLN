@@ -4,14 +4,23 @@
     
 ### 代码执行顺序：(The order of code execution：)
 （1）Medi_EE（事件抽取）
+
 （2）Event_relation（事件关系构建）
+
 （3）Attribute_value（属性值构建）
+
 （4）KEGLN（KEGLN模型训练）
+
 其中（1）、（2）和（3）为数据准备阶段（即预处理），独立于核心方法（4）之外。如果您的数据已经符合（4）KEGLN模型的训练数据标准，（1）、（2）、（3）步骤可以忽略。
+
 (1)  Medi_EE (Event extraction)
+
 (2)  Event_Relation (Event relation construction)
+
 (3)  Attribute_value (Attribute value construction)
+
 (4)  KEGLN (KEGLN model training)
+
 Among them, (1), (2), and (3) constitute the data preparation phase (i.e., preprocessing), which is independent of the core method (4). If your data already meets the training data standards for the KEGLN model, steps (1), (2), and (3) can be omitted.
 
 ### 一些解释：（Some explanations：）
@@ -20,6 +29,7 @@ Among them, (1), (2), and (3) constitute the data preparation phase (i.e., prepr
 
 ### 重要提示：（Important Note: ）
 步骤（1）、（2）和（3）均建议按照以单个患者病历作为输入来逐一执行代码，因为本研究提出的KEGLN是基于两个各自独立的患者的事件图来计算相似性的，同时处理多个患者病历容易造成数据和图结构混乱。（Steps (1), (2), and (3) are recommended to be executed one by one using individual patient records as input, because the KEGLN proposed in this study calculates similarity based on two independently constructed patient event graphs. Processing multiple patient data simultaneously may lead to the confusion of the data and the graph structure.）
+
 每个患者病历按照步骤（1），（2）和（3）处理完毕后，将步骤（2）和（3）产出的全部患者数据拼接在一起，即可得到最终KEGLN的训练数据。（After processing each patient's medical record according to steps (1), (2), and (3), concatenate all patient data produced from steps (2) and (3) to obtain the final KEGLN training data.）
 
 
