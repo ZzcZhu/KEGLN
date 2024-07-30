@@ -3,7 +3,7 @@
 ### 注意：（Note:）
 预测时要以单个患者的数据作为输入。需要预测的数据仍需要保持训练数据的格式，即example.json所示的格式，但entity，trigger和arguments可以为空，这时输出预测的结果即为标注后的数据。（When making predictions, using a single patient as input.The data to be predicted must maintain the format of the training data, as shown in “example.json”. However, the fields for entity, trigger, and arguments can be left empty. In this case, the output of the prediction will be the annotated data.）
 
-此外，data_convert.py是一个独立存在，需要预测完成后独立运行，其用于将事件抽取模型预测的结果数据，转换为可供“关系构建”（即步骤2）可读取的标准化数据格式。（Additionally, data_convert.py is an independent script that needs to be run separately after prediction is completed. It is used to convert the prediction results from the event extraction model into a standardized data format that can be read by the “relationship construction” process (i.e., step （2）).）
+此外，data_convert.py是一个独立存在，需要预测完成后独立运行，其用于将事件抽取模型预测的结果数据，转换为可供“关系构建”（即步骤2）和“属性值构建”（即步骤3）可读取的标准化数据格式。（Additionally, data_convert.py is an independent script that needs to be run separately after prediction is completed. It is used to convert the prediction results from the event extraction model into a standardized data format that can be read by the “relationship construction” process (i.e., step （2）) and the “Attribute-value construction” process (i.e., step （3）).）
 
 
 # 环境设置 （Environment settings）：
