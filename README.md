@@ -33,5 +33,5 @@ Among them, (1), (2), and (3) constitute the data preparation phase (i.e., prepr
 每个患者病历按照步骤（1），（2）和（3）处理完毕后，将步骤（2）和（3）产出的全部患者数据拼接在一起，即可得到最终KEGLN的训练数据。（After processing each patient's medical record according to steps (1), (2), and (3), concatenate all patient data produced from steps (2) and (3) to obtain the final KEGLN training data.）
 
 
-# 论文（Paper）
+# 论文（Cite）
 Zhu, Zhichao, Jianqiang Li, Chun Xu, Jingchen Zou, Qing Zhao. A knowledge-guided event-relation graph learning network for patient similarity with Chinese electronic medical records. IEEE Transactions on Big Data (2024): n. pag.

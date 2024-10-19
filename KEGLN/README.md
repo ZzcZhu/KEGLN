@@ -27,7 +27,7 @@ temp.cites为医学事件之间的关系链接数据，这些关系由Event_rela
 
 description为实体描述数据样例，描述的长度需要根据需求预先裁剪好。我们未在代码中设置读取长度的原因，是因为医院提供的描述质量较高，而百科全书提供的描述非常冗长且具有噪声。因此，在我们的方法中，医院提供的描述我们全部采纳，而百科全书提供的我们只取前100个词。在代码中设定长度参数容易导致医院提供的描述被切割破坏。请谅解，实体描述同样是合作医院整理的宝贵资源，目前无法公开提供，但您可通过百度百科、药物百科等资源中自行获取。（The “description” file is a sample of entity description data, where the length should be pre-trimmed according to the requirements. We do not set a length parameter in the code because the descriptions provided by hospitals are of high quality, whereas those from encyclopedias are often lengthy and noisy. Therefore, in our method, we fully utilize the descriptions provided by hospitals, while for encyclopedia entries, we only take the first 100 words. Setting a length parameter in the code could easily result in the truncation and degradation of the descriptions provided by hospitals.Please be understanding that these entity descriptions, like the rest of the valuable resources compiled by our partner hospitals, are not currently available for public dissemination. However, similar information can be independently sourced from resources such as Baidu Encyclopedia and Drug Encyclopedia.）
 
-# 4 论文 ：(Paper)
+# 4 论文 ：(Cite)
 Zhu, Zhichao, Jianqiang Li, Chun Xu, Jingchen Zou, Qing Zhao. A knowledge-guided event-relation graph learning network for patient similarity with Chinese electronic medical records. IEEE Transactions on Big Data (2024): n. pag.
 
 # 补充说明：（Supplementary explanation）
