@@ -34,4 +34,4 @@ Among them, (1), (2), and (3) constitute the data preparation phase (i.e., prepr
 
 
 # 论文（Paper）
-A knowledge-guided event-relation graph learning network for patient similarity with Chinese electronic medical records
+Zhu, Zhichao, Jianqiang Li, Chun Xu, Jingchen Zou, Qing Zhao. A knowledge-guided event-relation graph learning network for patient similarity with Chinese electronic medical records. IEEE Transactions on Big Data (2024): n. pag.
